@@ -122,8 +122,7 @@ async def handle_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if user_id in allowed_users:
             try:
                 result = subprocess.run(command, shell=True, capture_output=True, text=True, cwd=current_dir, timeout=600)
-                output = result.stdout.strip() + "
-" + result.stderr.strip()
+                output = result.stdout.strip() + "\n" + result.stderr.strip()
             except Exception as e:
                 output = f"Error: {str(e)}"
             output = output.strip() or "Command executed."
